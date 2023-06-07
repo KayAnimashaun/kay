@@ -1,0 +1,44 @@
+{
+  "name": "autonomous-worlds-hackathon",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/wefa-tech/autonomous-worlds-hackathon"
+  },
+  "scripts": {
+    "prepare": "(forge --version || pnpm foundry:up)",
+    "foundry:up": "curl -L https://foundry.paradigm.xyz | bash && bash $HOME/.foundry/bin/foundryup",
+    "mud:up": "pnpm recursive exec mud set-version -v canary && pnpm install",
+    "initialize": "pnpm recursive run initialize",
+    "dev": "concurrently -n contracts,client -c cyan,magenta 'cd packages/contracts/openar && pnpm run dev' 'cd packages/client && pnpm run dev'",
+    "dev:client": "pnpm --filter 'client' run dev",
+    "dev:contracts": "pnpm --filter 'contracts' dev",
+    "test": "pnpm recursive run test",
+    "build": "pnpm recursive run build"
+  },
+  "devDependencies": {
+    "@latticexyz/cli": "2.0.0-alpha.1.148+85e38ba8",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/parser": "5.46.1",
+    "@testing-library/cypress": "9.0.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/node": "17.0.38",
+    "cypress": "12.8.1",
+    "identity-obj-proxy": "3.0.0",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "start-server-and-test": "2.0.0",
+    "concurrently": "^8.0.1",
+    "eslint": "8.29.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^5.0.4",
+    "wait-port": "^1.0.4"
+  },
+  "engines": {
+    "node": "18.x",
+    "pnpm": "8.x"
+  }
+}

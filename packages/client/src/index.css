@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-color: #000;
+  --surface-color: #fff;
+  --gradient-start: #774d71;
+  --gradient-end: #a1bafe;
+}
+
+[data-theme="dark"] {
+  --text-color: #fff;
+  --surface-color: #292929;
+  --gradient-start: #501e55;
+  --gradient-end: #24205e;
+}
+
+* {
+  overscroll-behavior-y: contain;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  width: 100vw;
+  height: 100vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  background-image: linear-gradient(
+    320deg,
+    var(--gradient-start),
+    var(--gradient-end) 54%
+  );
+}
+
+#react-root,
+#react-root > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.dot {
+  position: absolute;
+  opacity: 0.27;
+  animation: dot-fade 1s infinite;
+  @apply w-4;
+  @apply h-4;
+  @apply rounded-full;
+}
+
+@keyframes dot-fade {
+  0%,
+  50%,
+  100% {
+    opacity: 0.27;
+  }
+  25% {
+    opacity: 1;
+  }
+}
